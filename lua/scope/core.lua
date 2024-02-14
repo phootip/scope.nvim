@@ -10,6 +10,14 @@ function M.on_tab_new_entered()
     vim.api.nvim_buf_set_option(0, "buflisted", true)
 end
 
+function M.expand()
+    for _, buf_nums in pairs(M.cache) do
+        for _, k in pairs(buf_nums) do
+            vim.api.nvim_buf_set_option(k, "buflisted", true)
+        end
+    end
+end
+
 function M.on_tab_enter()
     if config.hooks.pre_tab_enter ~= nil then
         config.hooks.pre_tab_enter()

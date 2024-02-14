@@ -29,6 +29,7 @@ function M._setup()
         session.save_state()
     end, {})
     vim.api.nvim_create_user_command("ScopeLoadState", session.load_state, {})
+    vim.api.nvim_create_user_command("ScopeExpand", core.expand, {})
     vim.api.nvim_create_user_command("ScopeList", core.print_summary, {}) --TODO: improve this
     if config.restore_state then
         vim.api.nvim_create_autocmd("SessionLoadPost", { group = group, callback = session.load_state }) --TODO: implement event behavior
